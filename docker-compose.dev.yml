@@ -22,9 +22,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=ambition_user
-      - POSTGRES_PASSWORD=ambition_pass
-      - POSTGRES_DB=ambition_db
+      - POSTGRES_USER=thanhlv_user
+      - POSTGRES_PASSWORD=thanhlv_pass
+      - POSTGRES_DB=thanhlv_db
     ports:
       - "5432:5432"
     networks:
