@@ -1,0 +1,7 @@
+pyvenv.cfg
+/venv
+.pre-commit-config.yaml
+node_modules
+*.dev
+*.example
+*.pyc
