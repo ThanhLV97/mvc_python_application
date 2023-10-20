@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  app:
+    build: ./src/backend
+    command: gunicorn --bind 0.0.0.0:5000 --reload app:app
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - ./src/backend:/app
+    env_file:
+      - ./src/backend/.env.dev
+    depends_on:
+      - db
+    networks:
+      - backnet
+
+  db:
+    image: postgres:13
+    container_name: db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=ambition_user
+      - POSTGRES_PASSWORD=ambition_pass
+      - POSTGRES_DB=ambition_db
+    ports:
+      - "5432:5432"
+    networks:
+      - backnet
+
+#   frontend:
+#     build:
+#       context: ./src/frontend
+#     ports:
+#       - 8080:8080
+#     volumes:
+#       - ./src/frontend:/app
+#     networks:
+#       - mynetwork
+
+#   nginx:
+#     image: nginx:latest
+#     restart: always
+#     volumes:
+#       - ./src/nginx/config.dev.conf:/etc/nginx/nginx.conf
+#     ports:
+#       - 80:80
+#     depends_on:
+#       - app
+#     networks:
+#       - mynetwork
+
+volumes:
+  static_data:
+  media_data:
+  postgres_data:
+
+networks:
+  backnet:

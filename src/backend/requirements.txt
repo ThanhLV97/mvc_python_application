@@ -1,0 +1,7 @@
+flask==2.3.2
+gunicorn==21.2.0
+Flask-SQLAlchemy==3.1.1
+flask-restx==1.1.0
+flask-jwt-extended==4.5.3
+flask-migrate==4.0.5
+psycopg2-binary==2.9.9
