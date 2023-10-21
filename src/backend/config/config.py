@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 
 
 class Config:
@@ -13,4 +14,7 @@ class Config:
         f"{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    JWT_SECRET_KEY = "thisisasecret"
+    JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY")
+    JWT_TOKEN_LOCATION = ["headers"]
+    JWT_IDENTITY_CLAIM = "user_id"
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=15)

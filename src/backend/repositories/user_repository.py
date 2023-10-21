@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from extensions import db
-from models.user import User
+from models.user_model import User
 from sqlalchemy import or_
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -58,5 +58,9 @@ class UserRepository:
         ).first()
 
     @staticmethod
-    def get_user_by_username(username) -> Optional[User]:
+    def get_user_by_username(username: str) -> Optional[User]:
         return User.query.filter_by(username=username).first()
+
+    @staticmethod
+    def get_user_by_email(email: str) -> Optional[User]:
+        return User.query.filter_by(email=email).first()
