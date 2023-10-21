@@ -1,6 +1,7 @@
 <!-- Home.vue -->
 <template>
     <main>
+      <ProductSearching/>
       <section class="hero">
         <div class="hero-content">
           <img src="https://www.z2u.com/static/platform/img/index/big-show-pic02.webp" alt="" width="100%" height="auto">
@@ -20,7 +21,6 @@
           </div>
         </div>
       </section>
-
       <section class="features">
         <div class="feature">
           <i class="fas fa-cogs"></i>
@@ -39,24 +39,24 @@
         </div>
       </section>
     </main>
-  </template>
-  
-  <script>
-  
-  export default {
-    name: 'HomePage',
-    data() {
-      return {
-        item_1_icon_link: "https://img.icons8.com/nolan/68/currency.png",
-        item_2_icon_link: "https://img.icons8.com/clouds/68/receipt.png",
-        item_3_icon_link: "https://img.icons8.com/arcade/68/controller.png",
-        item_4_icon_link: "https://img.icons8.com/bubbles/68/user-group-woman-woman.png"
-      }
-    },
-  };
-  </script>
-  
-  <style scoped>
+</template>
+
+<script>
+import ProductSearching from '@/components/ProductSearching.vue';
+
+export default {
+  name: 'HomePage',
+  components: {
+    ProductSearching,
+  },
+  data() {
+    return {
+    }
+  }
+};
+</script>
+
+<style scoped>
   
   /* Styles for hot-game-box-list-card */
   .hot-game-box-list-card .more-btn {
