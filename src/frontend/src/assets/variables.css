@@ -1,0 +1,10 @@
+/* Define CSS variables */
+:root {
+    --color-1: #fff;
+    --color-2: #000;
+    --color-3: #777;
+    --font-family-1: 'Bebas Neue', cursive;;
+    --background-color-1: #f5f5f5;
+    --background-color-2: #333;
+    --background-color-3: #555;
+  }
