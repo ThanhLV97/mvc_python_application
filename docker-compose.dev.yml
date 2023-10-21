@@ -30,27 +30,15 @@ services:
     networks:
       - backnet
 
-#   frontend:
-#     build:
-#       context: ./src/frontend
-#     ports:
-#       - 8080:8080
-#     volumes:
-#       - ./src/frontend:/app
-#     networks:
-#       - mynetwork
-
-#   nginx:
-#     image: nginx:latest
-#     restart: always
-#     volumes:
-#       - ./src/nginx/config.dev.conf:/etc/nginx/nginx.conf
-#     ports:
-#       - 80:80
-#     depends_on:
-#       - app
-#     networks:
-#       - mynetwork
+  frontend:
+    build:
+      context: ./src/frontend
+    ports:
+      - 8080:8080
+    volumes:
+      - ./src/frontend:/app
+    networks:
+      - backnet
 
 volumes:
   static_data:
