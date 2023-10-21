@@ -3,6 +3,7 @@ from controllers.user_controller import UserController
 from flask import request
 from flask_jwt_extended import jwt_required
 from flask_restx import Namespace, Resource
+from utils.decorators import role_required
 
 authorizations = {"Token": {"type": "apiKey", "in": "header", "name": "Authorization"}}
 
@@ -21,6 +22,7 @@ class UserResource(Resource):
 @api.route("/")
 class UsersResource(Resource):
     @jwt_required()
+    @role_required('admin')
     @api.doc(security="Token")
     def get(self):
         return users_controller.get_users()
