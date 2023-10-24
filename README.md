@@ -1,83 +1,160 @@
-## Project: Flask and VueJS in MVC pattern
-* Created by: Luu Van Thanh
-* Updated at: 22-10-2023
+# Project: Flask and VueJS in MVC pattern
 
-### Technologies Used
+- Created by: Luu Van Thanh
+- Updated at: 22-10-2023
 
-#### Backend:
+## Table of Contents
 
-* Flask
-* Flask-RESTful
-* Flask-JWT
-* SQLAlchemy
-* PostgreSQL
+- [Project: Flask and VueJS in MVC pattern](#project-flask-and-vuejs-in-mvc-pattern)
+  - [Table of Contents](#table-of-contents)
+  - [Technologies Used](#technologies-used)
+    - [Backend:](#backend)
+    - [Frontend:](#frontend)
+    - [Deployment:](#deployment)
+  - [Key Features](#key-features)
+  - [Endpoints](#endpoints)
+  - [Installation](#installation)
+  - [Todo](#todo)
+    - [Backend:](#backend-1)
+    - [Frontend:](#frontend-1)
+  - [Contact](#contact)
 
-#### Frontend:
+## Technologies Used
 
-* VueJS
-* Vue Router
-* Vuex
-* Axios
+### Backend:
 
-#### Deployment:
+- Flask
+- Flask-RESTful
+- Flask-JWT
+- SQLAlchemy
+- PostgreSQL
 
-* Docker
-* Docker Compose
+### Frontend:
 
-### Key Features
+- VueJS
+- Vue Router
+- Vuex
+- Axios
+
+### Deployment:
+
+- Docker
+- Docker Compose
+
+## Key Features
 
 The key features of this web include:
 
-* Token authen
-* Retrict premission for normal user and admin
-* User login and registration
-* Product search
-* Product management
-* Add/edit/delete products
-* Paginated product listing
-* Product details page
+- Token authen
+- Retrict premission for normal user and admin
+- User login and registration
+- Product search
+- Product management
+- Add/edit/delete products
+- Paginated product listing
+- Product details page
 
-### Installation
+## Endpoints
 
-To run the project locally, follow these steps:
+| Endpoint                             | Description                      |
+| ------------------------------------ | -------------------------------- |
+| **GET /users/**                      | Get list of users                |
+| **POST /users/user**                 | Create a new user                |
+| **DELETE /users/{user_id}**          | Delete a user                    |
+| **GET /users/{user_id}**             | Get a user                       |
+| **PUT /users/{user_id}**             | Update a user                    |
+| **POST /auth/login**                 | Login                            |
+| **POST /auth/refresh**               | Refresh access token             |
+| **POST /auth/register**              | Register new user                |
+| **DELETE /auth/revoke_access**       | Revoke access and refresh tokens |
+| **GET /categories/**                 | Get list of categories           |
+| **POST /categories/category**        | Create a new category            |
+| **DELETE /categories/{category_id}** | Delete a category                |
+| **GET /categories/{category_id}**    | Get a category                   |
+| **PUT /categories/{category_id}**    | Update a category                |
+| **GET /products/**                   | Get list of products             |
+| **POST /products/product**           | Create a new product             |
+| **DELETE /products/{product_id}**    | Delete a product                 |
+| **GET /products/{product_id}**       | Get a product                    |
+| **PUT /products/{product_id}**       | Update a product                 |
+
+## Installation
+
+1. Clone this repository:
+
+```
+git clone https://github.com/ThanhLV97/mvc_python_application.git
+```
+
+2. Navigate to the project directory:
+
+```
+cd mvc_python_application
+```
+
+3. Build and start the Docker containers:
 
 ```
 docker-compose up --build -d
 ```
 
-```
- docker-compose exec -it app bash
-```
-
-Run CLI to init master table
+4. Initialize the database:
 
 ```
- flask init_db
+docker-compose exec -it app bash
+
+flask init_db
 ```
 
-Access into http://localhost:8080
+5. Open the Swagger API documentation:  
+   Navigate to http://localhost:5000
+6. Access the frontend:
+   Navigate to http://localhost:8080
+7. Register a new user:
 
-Assign role for user by running cli:
+- You can register a new user through the frontend at http://localhost:8080/register
+
+- or through the Swagger docs in the auth namespace: http://localhost:5000
+![Register](image-1.png)
+
+8. Assign user roles:
+   To assign roles for a user, comeback terminal and run:
 
 ```
-flask assign_role <user_name> <"User"|"Amind">
+docker-compose exec -it app bash
+
+flask assign_role <username> <role>
 ```
 
-### TODO
+Where:
 
-Backend:
+``` <username> ``` is the username you registered
 
-- [X] Implement token authen
-- [X] Implement login, register and logout api
-- [X] implement user api
-- [X] Implement product and category api
-- [X] Implement restrict repermission for product
+``` <role>``` is "User" or "Admin"
 
-Frontend:
+## Todo
 
-- [X] Init master template with header and footer
-- [X] Implement login and register page
-- [X] Implement product searching with category filtering
+### Backend:
+
+- [x] Implement token authen
+- [x] Implement login, register and logout api
+- [x] implement user api
+- [x] Implement product and category api
+- [x] Implement restrict repermission for product
+- [ ] Integrating with frontend for the product searching
+
+### Frontend:
+
+- [x] Init master template with header and footer
+- [x] Implement login and register page
+- [x] Implement product searching with category filtering
 - [ ] Integrate product searching
 - [ ] Implement product page for listing product
 - [ ] Integrate product searching
+
+## Contact
+Reach me at
+* [Facebook](https://www.facebook.com/ambitionsky/)
+* [Linkedin](https://www.linkedin.com/in/thanhlv97/)
+* [Skype](https://join.skype.com/invite/k9Cb7FxyLhIH)
+  
