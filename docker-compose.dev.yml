@@ -6,12 +6,12 @@ services:
     command: gunicorn --bind 0.0.0.0:5000 --reload app:app
     ports:
       - "5000:5000"
-
     volumes:
       - ./src/backend:/app
     env_file:
       - ./src/backend/.env.dev
     depends_on:
+      - redis
       - db
     networks:
       - backnet
@@ -37,6 +37,13 @@ services:
       - 8080:8080
     volumes:
       - ./src/frontend:/app
+    networks:
+      - backnet
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
     networks:
       - backnet
 
