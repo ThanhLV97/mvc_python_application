@@ -3,7 +3,7 @@ from controllers.category_controller import CategoryController
 from flask import request
 from flask_jwt_extended import jwt_required
 from flask_restx import Namespace, Resource
-from utils.decorators import role_required
+from utils.decorators import cache_response, role_required
 
 authorizations = {"Token": {"type": "apiKey", "in": "header", "name": "Authorization"}}
 
@@ -24,8 +24,9 @@ class CategotyResource(Resource):
 
 @api.route("/")
 class CategoriesResource(Resource):
-    @jwt_required()
     @api.doc(security="Token")
+    @jwt_required()
+    @cache_response(timeout=60)
     def get(self):
         return category_controller.get_categories()
 
