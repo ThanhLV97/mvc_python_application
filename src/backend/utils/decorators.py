@@ -16,7 +16,7 @@ def role_required(role):
             user_id = get_jwt_identity()
             user = User.query.get(user_id)
 
-            if role not in user.roles:
+            if not user.has_role(role):
                 return {'message': f'{role} permission is required'}, 403
 
             return fn(*args, **kwargs)
