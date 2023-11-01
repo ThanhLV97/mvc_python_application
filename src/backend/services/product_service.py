@@ -4,8 +4,8 @@ from utils.utils import create_response
 
 
 class ProductService:
-    def get_products(self):
-        products = ProductRepository.get_products()
+    def get_products(self, page: int, per_page: int):
+        products = ProductRepository.get_products(page, per_page)
         return create_response(data=products)
 
     def get_product(self, product_id):

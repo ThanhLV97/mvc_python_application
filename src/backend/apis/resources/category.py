@@ -1,4 +1,4 @@
-from apis.models.category import creating_category_model
+from apis.fields.category_field import creating_category_model
 from controllers.category_controller import CategoryController
 from flask import request
 from flask_jwt_extended import jwt_required

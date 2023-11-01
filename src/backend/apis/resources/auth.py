@@ -1,4 +1,4 @@
-from apis.models.user_model import creating_user_model, login_model
+from apis.fields.user_field import creating_user_model, login_model
 from controllers.auth_controller import AuthController
 from flask_jwt_extended import get_jwt, get_jwt_identity, jwt_required
 from flask_restx import Namespace, Resource

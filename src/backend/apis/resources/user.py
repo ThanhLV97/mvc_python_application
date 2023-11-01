@@ -1,4 +1,4 @@
-from apis.models.user_model import creating_user_model
+from apis.fields.user_field import creating_user_model
 from controllers.user_controller import UserController
 from flask import request
 from flask_jwt_extended import jwt_required
