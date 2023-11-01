@@ -6,11 +6,11 @@ from sqlalchemy import and_
 from sqlalchemy.exc import SQLAlchemyError
 
 
-class ProductRepository:
+class ProductRepository():
     @staticmethod
-    def get_products() -> List[Product]:
-        products = Product.query.all()
-        return [product.to_dict() for product in products]
+    def get_products(page: int, per_page: int) -> List[Product]:
+        products = Product.query.paginate(page=page, per_page=per_page)
+        return products
 
     @staticmethod
     def get_product(product_id: int) -> Optional[dict]:

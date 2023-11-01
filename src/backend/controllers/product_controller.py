@@ -5,8 +5,8 @@ class ProductController:
     def __init__(self) -> None:
         self.product_service = ProductService()
 
-    def get_products(self):
-        return self.product_service.get_products()
+    def get_products(self, page: int, per_page: int):
+        return self.product_service.get_products(page, per_page)
 
     def get_product(self, product_id):
         return self.product_service.get_product(product_id)
