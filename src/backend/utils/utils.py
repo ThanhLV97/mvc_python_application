@@ -15,7 +15,7 @@ def create_response(data=None, message="Success", status_code=200):
 
     else:
         response = {
-            'data': [item.to_dict() for item in data] if data else [],
+            'data': data,
             'message': message,
         }
 
