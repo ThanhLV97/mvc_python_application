@@ -38,19 +38,48 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </section>
+      <section>
+        <div class="products">
+          <ProductCard class="products-card"
+            v-for="product in products"
+            :key="product.id"
+            :product="product"
+            @add-to-cart="addToCart" 
+          />
+        </div>
+      </section>
     </main>
 </template>
 
 <script>
+import ProductCard from '@/components/ProductCard.vue';
 import ProductSearching from '@/components/ProductSearching.vue';
 
 export default {
   name: 'HomePage',
   components: {
     ProductSearching,
+    ProductCard
   },
   data() {
     return {
+      // TODO @Thanhlv - fetch data from backend
+      products: [
+        {
+          price: 12,
+          stock: 5,
+          description: 23,
+          name: 'product_1',
+          image: 'https://img.icons8.com/ios/100/image--v1.png'
+        },
+        {
+          price: 12,
+          stock: 5,
+          description: 23,
+          name: 'product_1',
+          image: 'https://img.icons8.com/ios/100/image--v1.png'
+        }
+      ]
     }
   }
 };
@@ -58,6 +87,14 @@ export default {
 
 <style scoped>
   
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .product-card {
+    margin: 5px;
+  }
+
   /* Styles for hot-game-box-list-card */
   .hot-game-box-list-card .more-btn {
     background: #fb7600;
