@@ -15,12 +15,12 @@
             </div>
           </div>
           <div class="form-group">
-            <form @submit.prevent="handleSubmit">
+            <form @submit.prevent="onSubmit(email, password)">
               <div class="input-group">
-                <label for="username">Email</label>
+                <label for="email">Email</label>
                 <div class="input-container">
                   <i class="icon fas fa-envelope"></i>
-                  <input type="text" id="username" v-model="username" placeholder="Enter your email">
+                  <input type="text" id="email" v-model="email" placeholder="Enter your email">
                 </div>
               </div>
               <div class="input-group">
@@ -46,6 +46,7 @@
 import '@fortawesome/fontawesome-free/css/all.css';
 import { mapActions, mapState } from 'vuex';
 
+import { LOGIN } from "@/store/actions.type";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 
@@ -53,7 +54,7 @@ export default {
   name: 'LoginPage',
   data() {
     return {
-      username: '',
+      email: '',
       password: '',
     };
   },
@@ -69,15 +70,14 @@ export default {
   created () {
       this.logout();
   },
+
   methods: {
       ...mapActions('account', ['login', 'logout']),
-      handleSubmit () {
-          this.submitted = true;
-          const { username, password } = this;
-          if (username && password) {
-              this.login({ username, password })
-          }
-      }
+    onSubmit(email, password) {
+      this.$store
+        .dispatch(LOGIN, { username: email, password })
+        .then(() => this.$router.push({ name: "Home" }));
+    }
   }
 };
 </script>

@@ -54,6 +54,7 @@
 <script>
 import ProductCard from '@/components/ProductCard.vue';
 import ProductSearching from '@/components/ProductSearching.vue';
+import { FETCH_PRODUCT } from "@/store/actions.type";
 
 export default {
   name: 'HomePage',
@@ -61,27 +62,23 @@ export default {
     ProductSearching,
     ProductCard
   },
-  data() {
-    return {
-      // TODO @Thanhlv - fetch data from backend
-      products: [
-        {
-          price: 12,
-          stock: 5,
-          description: 23,
-          name: 'product_1',
-          image: 'https://img.icons8.com/ios/100/image--v1.png'
-        },
-        {
-          price: 12,
-          stock: 5,
-          description: 23,
-          name: 'product_1',
-          image: 'https://img.icons8.com/ios/100/image--v1.png'
-        }
-      ]
+  computed: {
+    products() {
+      return this.$store.getters.loadProducts
     }
-  }
+  },
+  methods: {
+    // TODO @thanhlv add the product implemented before
+    fetchProduct() {
+      this.$store
+        .dispatch(FETCH_PRODUCT)
+        // TODO Push into product page, current product in home 
+        // .then(() => this.$router.push({ name: "Home" }));
+    }
+  },
+  created() {
+    this.fetchProduct();
+  },
 };
 </script>
 

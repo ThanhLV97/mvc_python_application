@@ -47,6 +47,18 @@ services:
     networks:
       - backnet
 
+  nginx:
+    image: nginx:latest
+    restart: always
+    volumes:
+      - ./src/nginx/config.dev.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    depends_on:
+      - app
+    networks:
+      - backnet
+
 volumes:
   static_data:
   media_data:
@@ -54,3 +66,4 @@ volumes:
 
 networks:
   backnet:
+    driver: bridge

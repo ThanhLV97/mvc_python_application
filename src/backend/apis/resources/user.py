@@ -1,7 +1,7 @@
 from apis.fields.user_field import creating_user_model
 from controllers.user_controller import UserController
 from flask import request
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import get_jwt_identity, jwt_required
 from flask_restx import Namespace, Resource
 from utils.decorators import role_required
 
@@ -39,3 +39,11 @@ class SingleUserResource(Resource):
 
     def delete(self, user_id):
         return users_controller.delete_user(user_id)
+
+
+@api.route("/me")
+class MeResource(Resource):
+    @jwt_required()
+    @api.doc(security="Token")
+    def get(self):
+        return users_controller.get_user(get_jwt_identity())

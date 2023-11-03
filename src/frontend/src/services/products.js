@@ -13,8 +13,6 @@ function search(product, category) {
         .then(handleResponse)
         .then(products => {
             if (products) {
-                console.log('something')
-                console.log(products)
                 localStorage.setItem('products', JSON.stringify(products));
             }
             return products;
@@ -22,13 +20,12 @@ function search(product, category) {
 }
 
 function getCategories() {
-    const token = localStorage.getItem('token')
-
+    const user = JSON.parse(localStorage.getItem('user'))
     const requestOptions = {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${user.access_token}`
         },
     };
     return fetch('/api/categories', requestOptions)
