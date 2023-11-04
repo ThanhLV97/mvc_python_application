@@ -2,6 +2,7 @@ from apis import api
 from config.config import Config
 from extensions import db, jwt, mgi
 from flask import Flask, jsonify
+from flask_cors import CORS
 from flask_jwt_extended import verify_jwt_in_request
 from flask_jwt_extended.exceptions import NoAuthorizationError
 from repositories.auth_repository import AuthenRepository
@@ -27,6 +28,9 @@ def create_app(config_object) -> Flask:
 
 
 app = create_app(Config)
+
+CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 
 @app.before_request
 def before_request_handler():

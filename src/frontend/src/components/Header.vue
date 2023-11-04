@@ -4,10 +4,10 @@
     <nav>
       <router-link to="/" class="logo">1MT Interview</router-link>
       <div class="nav-links">
-        <router-link v-if="!status.isLoggedIn" to="/register">
+        <router-link v-if="!access_token" to="/register">
           <i class="fas fa-user-plus"></i> Register
         </router-link>
-        <router-link v-if="!status.isLoggedIn" to="/login">
+        <router-link v-if="!access_token" to="/login">
           <i class="fas fa-sign-in-alt"></i> Login
         </router-link>
         <router-link v-else to="/login">
@@ -35,7 +35,8 @@ export default {
     }
   },
   computed: {
-    ...mapState('account', ['status', 'user']),
+    // TODO @thanhlv
+    ...mapState('user', ['access_token']),
   },
 
 };

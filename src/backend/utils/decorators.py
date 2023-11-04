@@ -31,7 +31,6 @@ def cache_response(timeout=300):
         def wrapper(*args, **kwargs):
             # Generate a cache key based on the request URL
             cache_key = f'api:{request.url}'
-            print(cache_key)
             # Check if the response is already cached
             response = redis_client.get(cache_key)
             if response is not None:

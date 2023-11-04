@@ -46,12 +46,6 @@ methods: {
 },
 
 computed: {
-    filterOptions() {
-        const categories = this.getCategories()
-        console.log("result 1")
-        console.log(categories)
-        return []
-    }
 }
 }
 </script>
