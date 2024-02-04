@@ -107,6 +107,8 @@ docker-compose up --build -d
 ```
 docker-compose exec -it app bash
 
+flask db upgrade
+
 flask init_db
 ```
 

@@ -4,3 +4,4 @@ pyvenv.cfg
 node_modules
 *.dev
 *.pyc
+/.vscode
